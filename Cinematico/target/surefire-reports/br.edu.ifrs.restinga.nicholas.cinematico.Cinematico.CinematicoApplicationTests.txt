@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: br.edu.ifrs.restinga.nicholas.cinematico.Cinematico.CinematicoApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.185 s - in br.edu.ifrs.restinga.nicholas.cinematico.Cinematico.CinematicoApplicationTests
