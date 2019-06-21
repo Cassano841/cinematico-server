@@ -37,41 +37,33 @@ public class Usuarios {
         }
     }
     
+    @RequestMapping(path = "/usuarios/", method = RequestMethod.POST)
+    @ResponseStatus(HttpStatus.CREATED)
+    public Usuario cadastrarUsuario(@RequestBody Usuario usuario) {
+        Usuario usuarioBanco = usuarioDAO.save(usuario);
+        
+        return usuarioBanco;
+    }
+    
+    @RequestMapping(path="/usuarios/{id}", method = RequestMethod.PUT)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void atualizarUsuario(@PathVariable int id, @RequestBody Usuario usuario) {
+        final Usuario usuarioBanco = this.buscar(id);
+        
+        usuarioBanco.setNome(usuario.getNome());
+        usuarioBanco.setLogin(usuario.getLogin());
+        usuarioBanco.setSenha(usuario.getSenha());
+    }
+    
     @RequestMapping(path="/usuarios/{id}", method = RequestMethod.DELETE)
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void apagar(@PathVariable int id) {
+    public void apagarUsuario(@PathVariable int id) {
         if(usuarioDAO.existsById(id)) {
             usuarioDAO.deleteById(id);
         } else {
             throw new NaoEncontrado("Usuário não encontrado!");
         }
-    }
-
-    @RequestMapping(path="/usuarios/{id}", method = RequestMethod.PUT)
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void atualizar(@PathVariable int id, @RequestBody Usuario usuario) {
-        final Usuario usuarioBanco = this.buscar(id);
-        
-        usuarioBanco.setNome(usuario.getNome());
-        usuarioBanco.setEmail(usuario.getEmail());
-        usuarioBanco.setLogin(usuario.getLogin());
-        usuarioBanco.setSenha(usuario.getSenha());
-        usuarioBanco.setDataNascimento(usuario.getDataNascimento());
-    }
-    
-    @RequestMapping(path = "/usuarios/", method = RequestMethod.POST)
-    @ResponseStatus(HttpStatus.CREATED)
-    public Usuario cadastrar(@RequestBody Usuario usuario) {
-        Usuario usuarioBanco = usuarioDAO.save(usuario);
-        
-        usuarioBanco.setNome(usuario.getNome());
-        usuarioBanco.setEmail(usuario.getEmail());
-        usuarioBanco.setLogin(usuario.getLogin());
-        usuarioBanco.setSenha(usuario.getSenha());
-        usuarioBanco.setDataNascimento(usuario.getDataNascimento());
-        
-        return usuarioBanco;
-    }
-
+    }    
+   
 }
 
