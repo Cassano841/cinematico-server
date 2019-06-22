@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface UsuarioDAO extends CrudRepository<Usuario, Integer>{
-    
+    Iterable<Usuario> findByNomeContaining (String nome);
 }

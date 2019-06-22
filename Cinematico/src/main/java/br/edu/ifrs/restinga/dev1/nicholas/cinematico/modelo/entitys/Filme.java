@@ -1,5 +1,6 @@
 package br.edu.ifrs.restinga.dev1.nicholas.cinematico.modelo.entitys;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,8 +16,19 @@ public class Filme {
     private int duracaoFilme;
     private int faixaEtaria;
     
-    @ManyToOne  
+    @ManyToOne
     private Genero genero;
+    
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Produtora produtora;
+
+    public Produtora getProdutora() {
+        return produtora;
+    }
+
+    public void setProdutora(Produtora produtora) {
+        this.produtora = produtora;
+    }
 
     public int getId() {
         return id;

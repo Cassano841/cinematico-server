@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface FilmeDAO extends CrudRepository<Filme, Integer>{
-    
+    Iterable<Filme> findByNomeFilmeContaining(String nomeFilme);
 }
