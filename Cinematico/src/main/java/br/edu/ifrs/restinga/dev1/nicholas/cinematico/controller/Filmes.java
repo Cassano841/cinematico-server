@@ -69,6 +69,9 @@ public class Filmes {
         if(filmeBanco.getFaixaEtaria() <= 0){ //ARRUMAR ESTA PARTE
             throw new RequisicaoInvalida("Faixa etária deve ser maior que 0");
         }
+        if(filmeBanco.getAvaliacao()<= 0 || filmeBanco.getAvaliacao()>5){
+            throw new RequisicaoInvalida("Pontuação deve ser entre 1 e 5");
+        }
         
         return filmeBanco;
     }
@@ -87,10 +90,16 @@ public class Filmes {
         if(filmeBanco.getFaixaEtaria() <= 0){
             throw new RequisicaoInvalida("Faixa etária deve ser maior que 0");
         }
+        if(filmeBanco.getAvaliacao() <= 0 || filmeBanco.getAvaliacao() >5){
+            throw new RequisicaoInvalida("Avaliação deve ser entre 1 e 5");
+        }
         
         filmeBanco.setNomeFilme(filme.getNomeFilme());
         filmeBanco.setDuracaoFilme(filme.getDuracaoFilme());
         filmeBanco.setFaixaEtaria(filme.getFaixaEtaria());
+        filmeBanco.setAvaliacao(filme.getAvaliacao());
+        filmeBanco.setGenero(filme.getGenero());
+        filmeBanco.setProdutora(filme.getProdutora());
     }
     
     @RequestMapping(path="/filmes/{idFilme}", method = RequestMethod.DELETE)
@@ -102,7 +111,7 @@ public class Filmes {
             throw new NaoEncontrado("Filme não encontrado!");
         }
     }
-    
+    /*
     @RequestMapping(path = "/filmes/{idFilme}/genero/", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
     public Genero apresentarGenero(@PathVariable int idFilme) {
@@ -132,7 +141,7 @@ public class Filmes {
         
         //VALIDAÇÕES AQUI
                
-        //Genero generoBanco = generoDAO.save(genero);
+        Genero generoBanco = generoDAO.save(genero);
         
         filmeBanco.setGenero(filmeBanco.getGenero());
         
@@ -152,4 +161,5 @@ public class Filmes {
         
         filmeDAO.save(filme);
     }
+    */
 }

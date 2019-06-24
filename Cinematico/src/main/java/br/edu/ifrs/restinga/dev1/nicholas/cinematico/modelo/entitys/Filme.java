@@ -15,20 +15,13 @@ public class Filme {
     private String nomeFilme;
     private int duracaoFilme;
     private int faixaEtaria;
-    
-    @ManyToOne
+    private float avaliacao;
+
+    @ManyToOne(cascade = CascadeType.ALL)
     private Genero genero;
     
     @ManyToOne(cascade = CascadeType.ALL)
     private Produtora produtora;
-
-    public Produtora getProdutora() {
-        return produtora;
-    }
-
-    public void setProdutora(Produtora produtora) {
-        this.produtora = produtora;
-    }
 
     public int getId() {
         return id;
@@ -70,5 +63,20 @@ public class Filme {
         this.genero = genero;
     }
     
+    public Produtora getProdutora() {
+        return produtora;
+    }
+
+    public void setProdutora(Produtora produtora) {
+        this.produtora = produtora;
+    }
+    
+    public float getAvaliacao() {
+        return avaliacao;
+    }
+
+    public void setAvaliacao(float avaliacao) {
+        this.avaliacao = avaliacao;
+    }
     
 }
