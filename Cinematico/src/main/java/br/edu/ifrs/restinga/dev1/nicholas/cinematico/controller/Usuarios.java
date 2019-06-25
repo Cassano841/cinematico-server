@@ -22,6 +22,10 @@ public class Usuarios {
     @Autowired
     UsuarioDAO usuarioDAO;
     
+    /*************/
+    /* PESQUISAS */
+    /*************/
+    
     @RequestMapping(path = "/usuarios/pesquisar/nome", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
     public Iterable<Usuario> pesquisaNome(@RequestParam(required = false) String contem){ 
@@ -31,6 +35,20 @@ public class Usuarios {
             throw new RequisicaoInvalida("Nome não encontrado!");
         }
     }
+    
+    @RequestMapping(path = "/usuarios/pesquisar/login", method = RequestMethod.GET)
+    @ResponseStatus(HttpStatus.OK)
+    public Iterable<Usuario> pesquisaLogin(@RequestParam(required = false) String contem){ 
+        if(contem != null){
+            return usuarioDAO.findByNomeContaining(contem);
+        } else {
+            throw new RequisicaoInvalida("Login não encontrado!");
+        }
+    }
+    
+    /****************/
+    /* CRUD USUÁRIO */
+    /****************/
     
     @RequestMapping(path = "/usuarios/", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)

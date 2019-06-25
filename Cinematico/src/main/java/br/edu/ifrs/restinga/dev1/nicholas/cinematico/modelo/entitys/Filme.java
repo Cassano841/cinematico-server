@@ -17,10 +17,10 @@ public class Filme {
     private int faixaEtaria;
     private float avaliacao;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     private Genero genero;
     
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     private Produtora produtora;
 
     public int getId() {

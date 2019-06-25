@@ -51,7 +51,7 @@ public class Filmes {
         if(findById.isPresent()) {
             return findById.get();
         } else {
-            throw new NaoEncontrado("Usuário não encontrado!");
+            throw new NaoEncontrado("Filme não encontrado!");
         }
     }
     
@@ -70,7 +70,7 @@ public class Filmes {
             throw new RequisicaoInvalida("Faixa etária deve ser maior que 0");
         }
         if(filmeBanco.getAvaliacao()<= 0 || filmeBanco.getAvaliacao()>5){
-            throw new RequisicaoInvalida("Pontuação deve ser entre 1 e 5");
+            throw new RequisicaoInvalida("Avaliação deve ser entre 1 e 5");
         }
         
         return filmeBanco;
