@@ -1,11 +1,13 @@
 package br.edu.ifrs.restinga.dev1.nicholas.cinematico.modelo.entitys;
 
+import java.util.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
 
 @Entity
 public class Filme {
@@ -16,11 +18,42 @@ public class Filme {
     private int duracaoFilme;
     private int faixaEtaria;
     private float avaliacao;
+    private boolean filmeSemana;
+    
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date anoLancamento;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date dataCriacao;
 
-    @ManyToOne
+    public Date getDataCriacao() {
+        return dataCriacao;
+    }
+
+    public void setDataCriacao(Date dataCriacao) {
+        this.dataCriacao = dataCriacao;
+    }
+
+    public Date getAnoLancamento() {
+        return anoLancamento;
+    }
+
+    public void setAnoLancamento(Date anoLancamento) {
+        this.anoLancamento = anoLancamento;
+    }
+
+    public boolean isFilmeSemana() {
+        return filmeSemana;
+    }
+
+    public void setFilmeSemana(boolean filmeSemana) {
+        this.filmeSemana = filmeSemana;
+    }
+    
+    
+    @ManyToOne(cascade = CascadeType.ALL)
     private Genero genero;
     
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Produtora produtora;
 
     public int getId() {

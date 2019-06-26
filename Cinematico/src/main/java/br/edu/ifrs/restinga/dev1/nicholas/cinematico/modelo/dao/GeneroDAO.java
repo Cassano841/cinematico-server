@@ -6,5 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface GeneroDAO extends CrudRepository<Genero, Integer> {
+    Iterable<Genero> findByNomeGenero(String nomeGenero);
     
 }

@@ -103,6 +103,8 @@ public class Usuarios {
         usuarioBanco.setNome(usuario.getNome());
         usuarioBanco.setLogin(usuario.getLogin());
         usuarioBanco.setSenha(usuario.getSenha());
+        
+        usuarioDAO.save(usuarioBanco);
     }
     
     @RequestMapping(path="/usuarios/{id}", method = RequestMethod.DELETE)

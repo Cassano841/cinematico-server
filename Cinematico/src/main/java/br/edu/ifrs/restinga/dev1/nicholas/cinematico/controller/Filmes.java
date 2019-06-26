@@ -5,8 +5,6 @@ import br.edu.ifrs.restinga.dev1.nicholas.cinematico.errors.RequisicaoInvalida;
 import br.edu.ifrs.restinga.dev1.nicholas.cinematico.modelo.dao.FilmeDAO;
 import br.edu.ifrs.restinga.dev1.nicholas.cinematico.modelo.dao.GeneroDAO;
 import br.edu.ifrs.restinga.dev1.nicholas.cinematico.modelo.entitys.Filme;
-import br.edu.ifrs.restinga.dev1.nicholas.cinematico.modelo.entitys.Genero;
-import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -28,6 +26,10 @@ public class Filmes {
     @Autowired
     GeneroDAO generoDAO;
     
+    /*************/
+    /* PESQUISAS */
+    /*************/
+    
     @RequestMapping(path = "/filmes/pesquisar/nomeFilme", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
     public Iterable<Filme> pesquisaNome(@RequestParam(required = false) String contem){ 
@@ -37,6 +39,10 @@ public class Filmes {
             throw new RequisicaoInvalida("Nome do filme não encontrado!");
         }
     }
+    
+    /***************/
+    /* CRUD FILMES */
+    /***************/
     
     @RequestMapping(path = "/filmes/", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
@@ -100,6 +106,8 @@ public class Filmes {
         filmeBanco.setAvaliacao(filme.getAvaliacao());
         filmeBanco.setGenero(filme.getGenero());
         filmeBanco.setProdutora(filme.getProdutora());
+        
+        filmeDAO.save(filmeBanco);
     }
     
     @RequestMapping(path="/filmes/{idFilme}", method = RequestMethod.DELETE)
@@ -111,55 +119,5 @@ public class Filmes {
             throw new NaoEncontrado("Filme não encontrado!");
         }
     }
-    /*
-    @RequestMapping(path = "/filmes/{idFilme}/genero/", method = RequestMethod.GET)
-    @ResponseStatus(HttpStatus.OK)
-    public Genero apresentarGenero(@PathVariable int idFilme) {
-        return this.buscarFilme(idFilme).getGenero();
-    }
-    
-    @RequestMapping(path = "/filmes/{idFilme}/genero/", method = RequestMethod.POST)
-    @ResponseStatus(HttpStatus.CREATED)
-    public Genero cadastrarGenero(@PathVariable int idFilme, @RequestBody Genero genero){
-        final Filme filmeBanco = this.buscarFilme(idFilme);
-        
-        //VALIDAÇÕES AQUI
-       
-        Genero generoBanco = generoDAO.save(genero);
-        
-        //filmeBanco.getGenero().add(generoBanco);
-
-        filmeDAO.save(filmeBanco);
-        
-        return generoBanco;
-    }
-    
-    @RequestMapping(path = "/filmes/{idFilme}/genero/{idGenero}", method = RequestMethod.PUT)
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void atualizarGenero(@PathVariable int idFilme, @RequestBody Genero genero){
-        final Filme filmeBanco = this.buscarFilme(idFilme);
-        
-        //VALIDAÇÕES AQUI
-               
-        Genero generoBanco = generoDAO.save(genero);
-        
-        filmeBanco.setGenero(filmeBanco.getGenero());
-        
-        filmeDAO.save(filmeBanco);       
-    }
-    
-    @RequestMapping(path = "/filmes/{idFilme}/genero/{idGenero}", method = RequestMethod.DELETE)
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void apagarGenero(@PathVariable int idFilme, @PathVariable int idGenero){
-        Filme filme = this.buscarFilme(idFilme);
-        
-        if(generoDAO.existsById(idGenero)) {
-            generoDAO.deleteById(idGenero);
-        } else {
-            throw new NaoEncontrado("Filme não encontrado!");
-        }
-        
-        filmeDAO.save(filme);
-    }
-    */
+ 
 }
