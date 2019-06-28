@@ -65,7 +65,7 @@ public class Filmes {
     @ResponseStatus(HttpStatus.CREATED)
     public Filme cadastrarFilme(@RequestBody Filme filme) {
         Filme filmeBanco = filmeDAO.save(filme);
-        
+        /*
         if(filmeBanco.getNomeFilme() == null || filmeBanco.getNomeFilme() == ""){
             throw new RequisicaoInvalida("Nome do filme deve ser preenchido");
         }
@@ -78,6 +78,7 @@ public class Filmes {
         if(filmeBanco.getAvaliacao()<= 0 || filmeBanco.getAvaliacao()>5){
             throw new RequisicaoInvalida("Avaliação deve ser entre 1 e 5");
         }
+        */
         
         return filmeBanco;
     }
@@ -87,6 +88,7 @@ public class Filmes {
     public void atualizarFilme(@PathVariable int idFilme, @RequestBody Filme filme) {
         final Filme filmeBanco = this.buscarFilme(idFilme);
         
+        /*
         if(filmeBanco.getNomeFilme() == null || filmeBanco.getNomeFilme() == ""){
             throw new RequisicaoInvalida("Nome do filme deve ser preenchido");
         }
@@ -99,7 +101,7 @@ public class Filmes {
         if(filmeBanco.getAvaliacao() <= 0 || filmeBanco.getAvaliacao() >5){
             throw new RequisicaoInvalida("Avaliação deve ser entre 1 e 5");
         }
-        
+        */
         filmeBanco.setNomeFilme(filme.getNomeFilme());
         filmeBanco.setDuracaoFilme(filme.getDuracaoFilme());
         filmeBanco.setFaixaEtaria(filme.getFaixaEtaria());

@@ -5,7 +5,6 @@ import br.edu.ifrs.restinga.dev1.nicholas.cinematico.errors.RequisicaoInvalida;
 import br.edu.ifrs.restinga.dev1.nicholas.cinematico.modelo.dao.GeneroDAO;
 import br.edu.ifrs.restinga.dev1.nicholas.cinematico.modelo.entitys.Genero;
 import java.util.Optional;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -44,16 +43,16 @@ public class Generos {
     @ResponseStatus(HttpStatus.CREATED)
     public Genero cadastrarGenero(@RequestBody Genero genero) {
         Genero generoBanco = generoDAO.save(genero);
-        /*
-        if(genero.getNomeGenero() == "" || genero.getNomeGenero().isEmpty()){
+        
+        if(genero.getNomeGenero().isEmpty() || genero.getNomeGenero() == ""){
             throw new RequisicaoInvalida("Nome do Gênero deve ser preenchido!");
         }
-        if(genero.getDescricaoGenero() == "" || genero.getDescricaoGenero().isEmpty()){
+        if(genero.getDescricaoGenero().isEmpty() || genero.getDescricaoGenero() == ""){
             throw new RequisicaoInvalida("Descrição do gênero deve ser preenchido");
         }
-        if(!generoDAO.findByNomeGenero(genero.getNomeGenero().isEmpty())){
+        if(!generoDAO.findByNomeGenero(generoBanco.getNomeGenero()).isEmpty()){
             throw new RequisicaoInvalida("Gênero já cadastrado!");
-        }*/
+        }
         
         return generoBanco;
     }
@@ -63,14 +62,16 @@ public class Generos {
     public void atualizarGenero(@PathVariable int idGenero, @RequestBody Genero genero) {
         final Genero generoBanco = this.buscarGenero(idGenero);
         
-        /*
          if(genero.getNomeGenero() == ""){
             throw new RequisicaoInvalida("Nome do Gênero deve ser preenchido!");
         }
         if(genero.getDescricaoGenero() == ""){
             throw new RequisicaoInvalida("Descrição do gênero deve ser preenchido");
         }
-        */
+        if(!generoDAO.findByNomeGenero(generoBanco.getNomeGenero()).isEmpty()){
+            throw new RequisicaoInvalida("Gênero já cadastrado!");
+        }
+        
         
         generoBanco.setNomeGenero(generoBanco.getNomeGenero());
         generoBanco.setDescricaoGenero(genero.getDescricaoGenero());

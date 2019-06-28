@@ -42,11 +42,14 @@ public class Produtoras {
     public Produtora cadastrarProdutoras(@RequestBody Produtora produtora) {
         Produtora produtoraBanco = produtoraDAO.save(produtora);
         
-        if(produtora.getNomeProdutora() == ""){
+        if(produtora.getNomeProdutora().isEmpty() || produtora.getNomeProdutora() == ""){
             throw new RequisicaoInvalida("Nome da produtora deve ser preenchido");
         }
-        if(produtora.getLocalProdutora() == ""){
+        if(produtora.getLocalProdutora().isEmpty() || produtora.getLocalProdutora() == ""){
             throw new RequisicaoInvalida("Local da produtora deve ser preenchido");
+        }
+        if(!produtoraDAO.findByNomeProdutora(produtora.getNomeProdutora()).isEmpty()){
+            throw new RequisicaoInvalida("Produtora já cadastrada!");
         }
         
         return produtoraBanco;
@@ -57,11 +60,14 @@ public class Produtoras {
     public void atualizarProdutora(@PathVariable int idProdutora, @RequestBody Produtora produtora) {
         final Produtora produtoraBanco = this.buscarProdutora(idProdutora);
         
-        if(produtora.getNomeProdutora() == ""){
+        if(produtora.getNomeProdutora().isEmpty() || produtora.getNomeProdutora() == ""){
             throw new RequisicaoInvalida("Nome da produtora deve ser preenchido");
         }
-        if(produtora.getLocalProdutora() == ""){
+        if(produtora.getLocalProdutora().isEmpty() || produtora.getLocalProdutora() == ""){
             throw new RequisicaoInvalida("Local da produtora deve ser preenchido");
+        }
+        if(!produtoraDAO.findByNomeProdutora(produtora.getNomeProdutora()).isEmpty()){
+            throw new RequisicaoInvalida("Produtora já cadastrada!");
         }
      
         produtoraBanco.setNomeProdutora(produtoraBanco.getNomeProdutora());
