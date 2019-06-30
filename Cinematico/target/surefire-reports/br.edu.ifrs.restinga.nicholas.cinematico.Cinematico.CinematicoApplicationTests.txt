@@ -1,7 +1,7 @@
 -------------------------------------------------------------------------------
 Test set: br.edu.ifrs.restinga.nicholas.cinematico.Cinematico.CinematicoApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 4.079 s <<< FAILURE! - in br.edu.ifrs.restinga.nicholas.cinematico.Cinematico.CinematicoApplicationTests
-initializationError(br.edu.ifrs.restinga.nicholas.cinematico.Cinematico.CinematicoApplicationTests)  Time elapsed: 0.015 s  <<< ERROR!
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.43 s <<< FAILURE! - in br.edu.ifrs.restinga.nicholas.cinematico.Cinematico.CinematicoApplicationTests
+initializationError(br.edu.ifrs.restinga.nicholas.cinematico.Cinematico.CinematicoApplicationTests)  Time elapsed: 0.006 s  <<< ERROR!
 java.lang.IllegalStateException: Unable to find a @SpringBootConfiguration, you need to use @ContextConfiguration or @SpringBootTest(classes=...) with your test
 

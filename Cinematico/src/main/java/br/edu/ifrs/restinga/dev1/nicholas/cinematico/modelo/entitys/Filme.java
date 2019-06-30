@@ -17,43 +17,16 @@ public class Filme {
     private String nomeFilme;
     private int duracaoFilme;
     private int faixaEtaria;
-    private float avaliacao;
     private boolean filmeSemana;
+    private String anoLancamento;
     
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Date anoLancamento;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dataCriacao;
 
-    public Date getDataCriacao() {
-        return dataCriacao;
-    }
-
-    public void setDataCriacao(Date dataCriacao) {
-        this.dataCriacao = dataCriacao;
-    }
-
-    public Date getAnoLancamento() {
-        return anoLancamento;
-    }
-
-    public void setAnoLancamento(Date anoLancamento) {
-        this.anoLancamento = anoLancamento;
-    }
-
-    public boolean isFilmeSemana() {
-        return filmeSemana;
-    }
-
-    public void setFilmeSemana(boolean filmeSemana) {
-        this.filmeSemana = filmeSemana;
-    }
-    
-    
     @ManyToOne(cascade = CascadeType.ALL)
     private Genero genero;
     
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     private Produtora produtora;
 
     public int getId() {
@@ -88,6 +61,30 @@ public class Filme {
         this.faixaEtaria = faixaEtaria;
     }
 
+    public boolean isFilmeSemana() {
+        return filmeSemana;
+    }
+
+    public void setFilmeSemana(boolean filmeSemana) {
+        this.filmeSemana = filmeSemana;
+    }
+
+    public String getAnoLancamento() {
+        return anoLancamento;
+    }
+
+    public void setAnoLancamento(String anoLancamento) {
+        this.anoLancamento = anoLancamento;
+    }
+
+    public Date getDataCriacao() {
+        return dataCriacao;
+    }
+
+    public void setDataCriacao(Date dataCriacao) {
+        this.dataCriacao = dataCriacao;
+    }
+
     public Genero getGenero() {
         return genero;
     }
@@ -95,7 +92,7 @@ public class Filme {
     public void setGenero(Genero genero) {
         this.genero = genero;
     }
-    
+
     public Produtora getProdutora() {
         return produtora;
     }
@@ -104,12 +101,5 @@ public class Filme {
         this.produtora = produtora;
     }
     
-    public float getAvaliacao() {
-        return avaliacao;
-    }
-
-    public void setAvaliacao(float avaliacao) {
-        this.avaliacao = avaliacao;
-    }
     
 }

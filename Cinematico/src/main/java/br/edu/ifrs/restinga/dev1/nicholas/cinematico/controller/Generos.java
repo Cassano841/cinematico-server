@@ -49,10 +49,10 @@ public class Generos {
         }
         if(genero.getDescricaoGenero().isEmpty() || genero.getDescricaoGenero() == ""){
             throw new RequisicaoInvalida("Descrição do gênero deve ser preenchido");
-        }
+        }/*
         if(!generoDAO.findByNomeGenero(generoBanco.getNomeGenero()).isEmpty()){
             throw new RequisicaoInvalida("Gênero já cadastrado!");
-        }
+        }*/ 
         
         return generoBanco;
     }
@@ -67,13 +67,13 @@ public class Generos {
         }
         if(genero.getDescricaoGenero() == ""){
             throw new RequisicaoInvalida("Descrição do gênero deve ser preenchido");
-        }
+        }/*
         if(!generoDAO.findByNomeGenero(generoBanco.getNomeGenero()).isEmpty()){
             throw new RequisicaoInvalida("Gênero já cadastrado!");
-        }
+        }*/
         
         
-        generoBanco.setNomeGenero(generoBanco.getNomeGenero());
+        generoBanco.setNomeGenero(genero.getNomeGenero());
         generoBanco.setDescricaoGenero(genero.getDescricaoGenero());
         
         generoDAO.save(generoBanco);

@@ -47,10 +47,10 @@ public class Produtoras {
         }
         if(produtora.getLocalProdutora().isEmpty() || produtora.getLocalProdutora() == ""){
             throw new RequisicaoInvalida("Local da produtora deve ser preenchido");
-        }
+        }/*
         if(!produtoraDAO.findByNomeProdutora(produtora.getNomeProdutora()).isEmpty()){
             throw new RequisicaoInvalida("Produtora já cadastrada!");
-        }
+        }*/
         
         return produtoraBanco;
     }
@@ -65,13 +65,13 @@ public class Produtoras {
         }
         if(produtora.getLocalProdutora().isEmpty() || produtora.getLocalProdutora() == ""){
             throw new RequisicaoInvalida("Local da produtora deve ser preenchido");
-        }
-        if(!produtoraDAO.findByNomeProdutora(produtora.getNomeProdutora()).isEmpty()){
+        }/*
+        if(!produtoraDAO.findByNomeProdutora(produtoraBanco.getNomeProdutora()).isEmpty()){
             throw new RequisicaoInvalida("Produtora já cadastrada!");
-        }
+        }*/
      
-        produtoraBanco.setNomeProdutora(produtoraBanco.getNomeProdutora());
-        produtoraBanco.setLocalProdutora(produtoraBanco.getLocalProdutora());
+        produtoraBanco.setNomeProdutora(produtora.getNomeProdutora());
+        produtoraBanco.setLocalProdutora(produtora.getLocalProdutora());
         
         produtoraDAO.save(produtoraBanco);
     }

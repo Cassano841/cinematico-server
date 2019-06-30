@@ -1,0 +1,15 @@
+br\edu\ifrs\restinga\dev1\nicholas\cinematico\controller\Filmes.class
+br\edu\ifrs\restinga\dev1\nicholas\cinematico\errors\NaoEncontrado.class
+br\edu\ifrs\restinga\dev1\nicholas\cinematico\modelo\entitys\Produtora.class
+br\edu\ifrs\restinga\dev1\nicholas\cinematico\modelo\entitys\Genero.class
+br\edu\ifrs\restinga\dev1\nicholas\cinematico\controller\Generos.class
+br\edu\ifrs\restinga\dev1\nicholas\cinematico\modelo\dao\FilmeDAO.class
+br\edu\ifrs\restinga\dev1\nicholas\cinematico\modelo\dao\ProdutoraDAO.class
+br\edu\ifrs\restinga\dev1\nicholas\cinematico\modelo\entitys\Filme.class
+br\edu\ifrs\restinga\dev1\nicholas\cinematico\controller\Produtoras.class
+br\edu\ifrs\restinga\dev1\nicholas\cinematico\controller\Usuarios.class
+br\edu\ifrs\restinga\dev1\nicholas\cinematico\modelo\entitys\Usuario.class
+br\edu\ifrs\restinga\dev1\nicholas\cinematico\errors\RequisicaoInvalida.class
+br\edu\ifrs\restinga\dev1\nicholas\cinematico\modelo\dao\GeneroDAO.class
+br\edu\ifrs\restinga\dev1\nicholas\cinematico\CinematicoApplication.class
+br\edu\ifrs\restinga\dev1\nicholas\cinematico\modelo\dao\UsuarioDAO.class
